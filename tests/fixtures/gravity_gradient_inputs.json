@@ -1,0 +1,381 @@
+{
+  "spec_id": "gravity_gradient_inputs.v0.1",
+  "generated_at": "2026-05-24T09:55:04.486336",
+  "python_version": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+  "numpy_version": "2.2.6",
+  "G_NEWTON": 6.6743e-11,
+  "n_cases": 7,
+  "cases": [
+    {
+      "name": "case_01_jwst_libration_eq",
+      "description": "JWST-like body at hypothetical L2-like configuration, rho_hat along body z-axis (libration equilibrium). Expected tau = 0.",
+      "inputs": {
+        "I_body": [
+          [
+            23322.629676870747,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            23322.629676870747,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            15384.375
+          ]
+        ],
+        "r_rel_inertial": [
+          0.0,
+          0.0,
+          1500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "case_02_jwst_off_eq_10deg_y",
+      "description": "JWST-like body tilted 10 deg about inertial y; rho still along inertial z; oblate -> destabilising torque about body y expected.",
+      "inputs": {
+        "I_body": [
+          [
+            23322.629676870747,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            23322.629676870747,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            15384.375
+          ]
+        ],
+        "r_rel_inertial": [
+          0.0,
+          0.0,
+          1500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            0.984807753012208,
+            0.0,
+            0.17364817766693033
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.17364817766693033,
+            0.0,
+            0.984807753012208
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          0.0,
+          -4.809719144034334e-10,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "case_03_probe_generic_attitude",
+      "description": "Probe-like body, q ~ 30 deg about (1,1,1) axis; rho in arbitrary inertial direction.",
+      "inputs": {
+        "I_body": [
+          [
+            29.06,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            29.06,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            5.0
+          ]
+        ],
+        "r_rel_inertial": [
+          1000000.0,
+          2000000.0,
+          500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            0.9106836025229591,
+            -0.24401693585629242,
+            0.3333333333333333
+          ],
+          [
+            0.3333333333333333,
+            0.9106836025229591,
+            -0.24401693585629242
+          ],
+          [
+            -0.24401693585629242,
+            0.3333333333333333,
+            0.9106836025229591
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          -7.05018055587609e-11,
+          -5.0466051602019765e-11,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "case_04_asymmetric_body",
+      "description": "Fully asymmetric inertia diag(1000, 2000, 5000); generic rho and attitude. Exercises all three principal-axis distinctness.",
+      "inputs": {
+        "I_body": [
+          [
+            1000.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2000.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            5000.0
+          ]
+        ],
+        "r_rel_inertial": [
+          300000000.0,
+          -200000000.0,
+          400000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            0.7388662868410183,
+            -0.3139697496594014,
+            0.5962378774185508
+          ],
+          [
+            0.46218077604693153,
+            0.8800196453053327,
+            -0.10933596905562473
+          ],
+          [
+            -0.49037285857031504,
+            0.356354346368175,
+            0.795327630226744
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          -5.246415591730327e-09,
+          3.6674235165911284e-09,
+          2.255663220544047e-10
+        ]
+      }
+    },
+    {
+      "name": "case_05_near_spherical",
+      "description": "Near-spherical body (anisotropy ~ 5e-4). Expected tau magnitude many orders below the principal-moment-difference scale.",
+      "inputs": {
+        "I_body": [
+          [
+            2540.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2541.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            2540.5
+          ]
+        ],
+        "r_rel_inertial": [
+          0.0,
+          0.0,
+          1500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "case_06_oblate_libration_eq",
+      "description": "Oblate reference body diag(2540,2540,3870) at libration equilibrium (rho_hat along body z). Expected tau = 0. This is the OBLATE counterpart of case_01_jwst_libration_eq; the JWST-like composite is prolate by parallel-axis spread, while this synthetic body is oblate by construction.",
+      "inputs": {
+        "I_body": [
+          [
+            2540.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2540.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            3870.0000000000005
+          ]
+        ],
+        "r_rel_inertial": [
+          0.0,
+          0.0,
+          1500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "case_07_oblate_off_eq_10deg_y",
+      "description": "Oblate reference body tilted 10 deg about inertial y; rho still along inertial z. Oblate body -> destabilising torque about body y expected, sign opposite to case_02_jwst_off_eq_10deg_y (the prolate JWST-like would be restoring at this attitude).",
+      "inputs": {
+        "I_body": [
+          [
+            2540.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2540.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            3870.0000000000005
+          ]
+        ],
+        "r_rel_inertial": [
+          0.0,
+          0.0,
+          1500000000.0
+        ],
+        "R_body_to_inertial": [
+          [
+            0.984807753012208,
+            0.0,
+            0.17364817766693033
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.17364817766693033,
+            0.0,
+            0.984807753012208
+          ]
+        ],
+        "m_other": 5.972e+24
+      },
+      "output": {
+        "tau_body": [
+          0.0,
+          8.058353784244334e-11,
+          0.0
+        ]
+      }
+    }
+  ]
+}

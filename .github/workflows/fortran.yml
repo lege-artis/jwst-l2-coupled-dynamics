@@ -1,0 +1,52 @@
+# .github/workflows/fortran.yml
+# CI workflow: build + test the Fortran reference backend on push + PR.
+# 13 unit tests; 3 C2 cross-tests vs Python fixtures (Higham §4.2 Option G).
+name: fortran-backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backends/fortran/**'
+      - 'tests/fixtures/**'
+      - 'shared/**'
+      - '.github/workflows/fortran.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backends/fortran/**'
+      - 'tests/fixtures/**'
+      - 'shared/**'
+      - '.github/workflows/fortran.yml'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up gfortran
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran make
+          gfortran --version
+      - name: Set up Python (cross-test oracle)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install NumPy (cross-test oracle deps)
+        run: python -m pip install --upgrade pip && python -m pip install numpy
+      - name: Build + unit tests
+        run: |
+          cd backends/fortran
+          make clean && make all
+      - name: C2 cross-test against Python fixtures
+        run: |
+          cd backends/fortran
+          make cross-test
+      - name: Upload audit summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortran-cross-test-summary
+          path: backends/fortran/_audit/cross_test_summary.md
+          if-no-files-found: warn

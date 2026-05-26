@@ -1,0 +1,36 @@
+{
+  "title": "lege-artis/jwst-l2-coupled-dynamics",
+  "description": "Canonical reference implementation of two-rigid-body gravitationally-coupled dynamics, anchored on a JWST-like primary and a probe-like secondary satellite in deep space. Python reference layer + Fortran reference backend; canonical-tier mathematical documentation (English) covering configuration manifold on SE(3) x SE(3), kinetic energy in intrinsic form, mutual gravitational potential and multipole expansion, Euler-Lagrange and Euler-Poincare reduction with two-in-parallel methodology cross-validation, body-frame Euler equations as specialisation, and analytical limits with five closed-form validation testbeds. Cross-validated against Python oracle at Higham Option G tolerance.",
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Yamyang, Petr",
+      "affiliation": "lege-artis",
+      "orcid": ""
+    }
+  ],
+  "keywords": [
+    "rigid-body dynamics",
+    "gravitational coupling",
+    "gravity-gradient torque",
+    "JWST",
+    "L2 Lagrange point",
+    "Euler-Poincare reduction",
+    "numerical reference implementation",
+    "Fortran",
+    "canonical-tier documentation",
+    "lege-artis"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/lege-artis/fourier",
+      "relation": "isReferencedBy",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "communities": [],
+  "notes": "Companion arXiv preprint forthcoming. Citation metadata in CITATION.cff at repository root."
+}

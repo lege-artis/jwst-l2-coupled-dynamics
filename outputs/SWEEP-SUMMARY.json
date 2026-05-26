@@ -1,0 +1,228 @@
+{
+  "sweep_total_wall_time_s": 18.13,
+  "n_testcases": 6,
+  "cases": [
+    {
+      "name": "C1-short-rod-x",
+      "probe_L": 1.0,
+      "approach_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 2.98,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        15.600000000000001,
+        15.600000000000001
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 3.25,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.3386982723005,
+      "max_off_diag_B": 3.3458359606164274,
+      "max_tau_gg_A_Nm": 2.94347173348375e-09,
+      "max_tau_gg_B_Nm": 9.811238201306713e-11,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": 0.7350691744032711,
+      "dE_over_E0": 9.306640957253426e-13,
+      "dL_over_L0": 1.6555527284828344e-09
+    },
+    {
+      "name": "C2-medium-x",
+      "probe_L": 5.0,
+      "approach_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 3.01,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        375.59999999999997,
+        375.59999999999997
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 78.24999999999999,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.3386982723005,
+      "max_off_diag_B": 107.39993163488458,
+      "max_tau_gg_A_Nm": 2.94347173348375e-09,
+      "max_tau_gg_B_Nm": 3.3684688450116233e-09,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": -0.32011668698267376,
+      "dE_over_E0": 6.034427345629145e-11,
+      "dL_over_L0": 1.7372124554413465e-09
+    },
+    {
+      "name": "C3-long-pencil-x",
+      "probe_L": 15.0,
+      "approach_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 2.99,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        3375.6,
+        3375.6
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 703.2499999999999,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.3386982723005,
+      "max_off_diag_B": 973.1060661092366,
+      "max_tau_gg_A_Nm": 2.94347173348375e-09,
+      "max_tau_gg_B_Nm": 3.0621905772539795e-08,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": -0.344323339658832,
+      "dE_over_E0": 5.383375739855756e-10,
+      "dL_over_L0": 2.4251360342475245e-09
+    },
+    {
+      "name": "C4-medium-y",
+      "probe_L": 5.0,
+      "approach_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 3.01,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        375.59999999999997,
+        375.59999999999997
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 78.24999999999999,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.3386991483317,
+      "max_off_diag_B": 107.39993168241091,
+      "max_tau_gg_A_Nm": 2.6255413960903036e-09,
+      "max_tau_gg_B_Nm": 4.5758709165398427e-10,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": -0.3201168173426959,
+      "dE_over_E0": 8.843860873076271e-13,
+      "dL_over_L0": 7.471846163940118e-10
+    },
+    {
+      "name": "C5-medium-z",
+      "probe_L": 5.0,
+      "approach_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 3.04,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        375.59999999999997,
+        375.59999999999997
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 78.24999999999999,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.338699603956,
+      "max_off_diag_B": 107.39993143119443,
+      "max_tau_gg_A_Nm": 2.94342720430588e-09,
+      "max_tau_gg_B_Nm": 3.368549025215629e-09,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": -0.32011695053536854,
+      "dE_over_E0": 5.979033321797783e-11,
+      "dL_over_L0": 1.818257452533503e-09
+    },
+    {
+      "name": "C6-medium-diag",
+      "probe_L": 5.0,
+      "approach_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "separation_initial_m": 30.0,
+      "integration_horizon_s": 1000,
+      "snapshots": 501,
+      "wall_time_s": 3.05,
+      "m_A_kg": 2450.0,
+      "m_B_kg": 100.0,
+      "principal_moments_A": [
+        15384.375,
+        23322.629676870747,
+        23322.629676870747
+      ],
+      "principal_moments_B": [
+        4.800000000000001,
+        375.59999999999997,
+        375.59999999999997
+      ],
+      "anisotropy_A": 1.51599461641248,
+      "anisotropy_B": 78.24999999999999,
+      "fft_peak_period_omega_A_x": 250.50000000000003,
+      "fft_peak_period_theory_axisymmetric_A": 230.75035079416057,
+      "max_off_diag_A": 2619.3386985212005,
+      "max_off_diag_B": 107.39993159334371,
+      "max_tau_gg_A_Nm": 2.9434789758044025e-09,
+      "max_tau_gg_B_Nm": 3.368535669994536e-09,
+      "initial_omega_alignment": 0.7510674414393146,
+      "final_omega_alignment": -0.3201167810788813,
+      "dE_over_E0": 6.324063460747394e-12,
+      "dL_over_L0": 3.038207574945243e-09
+    }
+  ]
+}

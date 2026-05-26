@@ -1,0 +1,60 @@
+# Citation File Format (CFF) v1.2.0
+# https://citation-file-format.github.io/
+# Renders as "Cite this repository" on GitHub.
+
+cff-version: 1.2.0
+title: "lege-artis/jwst-l2-coupled-dynamics"
+message: >-
+  If you use this software, please cite both the software and any
+  forthcoming publication associated with it.
+type: software
+authors:
+  - given-names: Petr
+    family-names: Yamyang
+    email: petr.yamyang@gmail.com
+    affiliation: lege-artis
+abstract: >-
+  Canonical reference implementation of two-rigid-body
+  gravitationally-coupled dynamics, anchored on a JWST-like primary and
+  a probe-like secondary satellite in deep space. Python reference layer
+  + Fortran reference backend; canonical-tier mathematical documentation
+  (English) covering configuration manifold on SE(3) x SE(3), kinetic
+  energy in intrinsic form, mutual gravitational potential and multipole
+  expansion, Euler-Lagrange and Euler-Poincare reduction (two-in-parallel
+  methodology, cross-validated), body-frame Euler equations as
+  specialisation, analytical limits and validation gates with five
+  closed-form testbeds. Cross-validated against Python oracle at
+  ULP * sqrt(N) tolerance (Higham 2002 Option G); doctrine sec. 4.4
+  C1-C4 acceptance criteria met at the v0.1.0 release tag.
+keywords:
+  - rigid-body dynamics
+  - gravitational coupling
+  - gravity-gradient torque
+  - JWST
+  - L2 Lagrange point
+  - Euler-Poincare reduction
+  - numerical reference implementation
+  - Fortran
+  - canonical-tier documentation
+  - lege-artis
+repository-code: "https://github.com/lege-artis/jwst-l2-coupled-dynamics"
+url: "https://github.com/lege-artis"
+license: Apache-2.0
+license-url: "https://www.apache.org/licenses/LICENSE-2.0"
+version: 0.1.0
+date-released: 2026-05-25
+# Preferred citation block — populated when the companion paper is
+# accepted on arXiv. For now, software-only citation per the top-level
+# block above is canonical.
+# preferred-citation:
+#   type: article
+#   authors:
+#     - given-names: Petr
+#       family-names: Yamyang
+#   title: "Coupled rigid-body dynamics of JWST-like primary and probe-like secondary at deep-space Lagrange points"
+#   year: 2026
+#   journal: "arXiv preprint"
+#   identifiers:
+#     - type: other
+#       value: "arXiv:TBD"
+#       description: "arXiv preprint identifier (to be assigned)"

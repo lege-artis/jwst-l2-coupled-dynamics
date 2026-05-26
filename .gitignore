@@ -1,0 +1,78 @@
+# jwst-l2-coupled-dynamics — multi-language .gitignore
+# Mirrors the shared lege-artis-org template, scoped to this project's languages.
+
+# -- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+.env
+*.egg
+.pytest_cache/
+pytest-cache-files-*/
+.coverage
+htmlcov/
+
+# -- Fortran ---------------------------------------------------------------
+backends/fortran/build/
+backends/fortran/*.mod
+backends/fortran/*.o
+backends/fortran/tests/*.exe
+*.mod
+*.smod
+*.f90.bak
+
+# -- C++ (Phase 2+) --------------------------------------------------------
+backends/cpp/build/
+backends/cpp/cmake-build-*/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# -- Pascal (Phase 2+) -----------------------------------------------------
+backends/pascal/build/
+*.ppu
+*.compiled
+*.bak
+*.lps
+
+# -- Rust (Phase 2+) -------------------------------------------------------
+backends/rust/target/
+Cargo.lock
+
+# -- Generated simulation output -------------------------------------------
+# Keep tests/fixtures/*.json (canonical oracle) — ignore run-specific outputs
+outputs/*.ndjson
+# Figures are kept committed for now per the structured-numerical-first
+# + supplementary-figures convention; uncomment to make them on-demand:
+# outputs/figures/
+
+# -- Fortran audit deposits (per-machine telemetry) ------------------------
+backends/fortran/_audit/fortran_*_output.json
+backends/fortran/_audit/cross_test_python_output.log
+
+# -- IDE / OS --------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# -- Credentials / secrets -------------------------------------------------
+credentials.yaml
+*.key
+*.pem
+*.p12
+.env.local
+.env.production

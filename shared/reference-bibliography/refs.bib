@@ -1,0 +1,206 @@
+% =====================================================================
+% JWST-L2 coupled-dynamics — canonical-tier reference bibliography
+% =====================================================================
+% Sources are organised by tier of authority:
+%   §A — primary textbooks on analytical mechanics (Lagrangian / Hamiltonian)
+%   §B — primary textbooks on rigid-body dynamics
+%   §C — modern frame-invariant / variational / symplectic formulations
+%   §D — gravitational potential of extended bodies; multipole expansion
+%   §E — restricted three-body problem and Lagrangian equilibrium points
+%   §F — primary references project-owner anchored (Feynman + Thorne&Blandford + Matfyzpress)
+%   §G — numerical-methods anchors (RK4, symplectic integrators)
+%
+% Conventions:
+%   - All citation keys ASCII-only.
+%   - Wikipedia is not a primary source; never cited here.
+%   - Web URLs only where the source itself is web-native (Feynman lectures).
+% =====================================================================
+
+
+% =====================================================================
+% §F — Primary references anchored by project owner (2026-05-23)
+% =====================================================================
+
+@book{ThorneBlandford2017,
+  author    = {Thorne, Kip S. and Blandford, Roger D.},
+  title     = {Modern Classical Physics: Optics, Fluids, Plasmas, Elasticity, Relativity, and Statistical Physics},
+  publisher = {Princeton University Press},
+  year      = {2017},
+  isbn      = {978-0-691-15902-7},
+  note      = {Modern reference for the geometric-viewpoint / coordinate-free framing of classical-physics structures (tensor algebra, stress tensor, inertia tensor as an example). PDF inspection 2026-05-23 confirmed: this edition (subtitled "Optics, Fluids, Plasmas, Elasticity, Relativity, and Statistical Physics") does NOT contain a rigid-body-mechanics chapter — the König decomposition and inertia-tensor mass-distribution derivation belong to a companion mechanics volume not bundled with the uploaded edition. Specific equation-level back-fill citations resolved 2026-05-23: §1.1.1 + §1.3 (inertia tensor as a coordinate-free vector-valued linear function $\mathbf{I}(\,\cdot\,, \boldsymbol{\omega}) = \mathbf{J}$, complementing the coordinate derivation in our Chapter 02 §2.4); §27.5.1-§27.5.2 + Eqs. (27.50)-(27.53) (Cartesian multipole expansion of the Newtonian gravitational potential as scaffolding for gravitational-wave-source theory, anchoring our Chapter 03 §3.2 + §3.4.3 derivations). Note: T&B's mass quadrupole moment $\mathcal{I}_{jk}$ in Eq. (27.53) uses prefactor 1/3; our Chapter 03 follows the Jackson convention with prefactor 3, giving $\mathbf{Q}_{jk} = 3\, \mathcal{I}_{jk}$.}
+}
+
+@misc{FeynmanLectures,
+  author    = {Feynman, Richard P. and Leighton, Robert B. and Sands, Matthew},
+  title     = {The {Feynman} Lectures on Physics},
+  publisher = {Caltech, online edition},
+  year      = {1963--2013},
+  url       = {https://www.feynmanlectures.caltech.edu/},
+  note      = {Public web edition. Vol I chapters 18, 19, 20 (rotation, centre of mass, angular momentum, rotation in three dimensions); Vol II chapters 13, 19 (vector calculus; principle of least action) are the relevant anchors for the configuration-manifold and variational chapters.}
+}
+
+@book{Podolsky2018,
+  author    = {Podolsk{\'y}, Ji{\v r}{\'\i}},
+  title     = {Teoretick{\'a} mechanika ve t{\v r}ech knih{\'a}ch},
+  publisher = {Matfyzpress},
+  address   = {Praha},
+  year      = {2018},
+  isbn      = {978-80-7378-499-7},
+  language  = {Czech},
+  audience  = {CS readers; supplementary for EN readers},
+  note      = {Modern Czech-language presentation of analytical mechanics in frame-invariant form. Charles University author known for general-relativity work; brings modern coordinate-free perspective to the classical material. AUDIENCE NOTE: this is the most up-to-date Czech-language reference for analytical mechanics in modern frame-invariant form; in `docs/canonical/en/` chapters, cite as supplementary "for Czech-reading audiences" only --- not as a primary referral, because the audience-language mismatch would frustrate EN readers who cannot access it. Becomes the primary referral in `docs/canonical/cs/` translations (forthcoming). Project owner holds paper copy. SPECIFIC EQUATION ANCHORS (catalogued 2026-05-24 from project owner's photographed pages 137-162): Kapitola 6 Kinematika tuh{\'e}ho t{\v e}lesa --- {\S}6.1 vectors and tensors (orthonormal basis, transformation matrices A, classical-vs-modern tensor definitions); {\S}6.2 relativity of rotational motion (inertial vs body-fixed/korotuj{\'\i}c{\'\i} basis); {\S}6.3 Eqs.~(6.2) $\Omega' = (dA/dt) A^t$ (body-frame angular-velocity tensor), (6.4) $\Omega'_{ij} \equiv \Omega(\mathbf{e}'_i, \mathbf{e}'_j)$ (body-frame components), (6.5) antisymmetry from orthogonality, (6.6)-(6.7) dual pseudo-vector, (6.8) boxed transport equation $(d\mathbf{w}/dt)|_{\mathrm{prostor}} = (d\mathbf{w}/dt)|_{\mathrm{t{\v e}leso}} + \boldsymbol\Omega \times \mathbf{w}$, (6.9)-(6.10) spatial-frame trivialisation $\Omega = A^t (dA/dt)$, (6.13) angular-velocity composition $\Omega^C = \Omega^B + \Omega^A$; {\S}6.4 Eqs.~(6.11) elementary rotation example, (6.14)-(6.16) intrinsic-ZXZ Euler-angle matrices D/C/B with $A = BCD$, (6.17) boxed Euler kinematic equations $\Omega_x = \dot\varphi \sin\vartheta \sin\psi + \dot\vartheta \cos\psi$ etc.; {\S}6.5 Eq.~(6.18) non-inertial acceleration decomposition (Euler + Coriolis + centripetal/doosov{\'e}). Kapitola 7 Dynamika tuh{\'e}ho t{\v e}lesa --- {\S}7.1 Eqs.~(7.3) bilinear inertia-tensor definition $I(\boldsymbol\xi, \boldsymbol\Omega) \equiv \sum_a m^a (\boldsymbol\xi \times \mathbf{r}^a) \cdot (\boldsymbol\Omega \times \mathbf{r}^a)$, (7.6) $T = \tfrac{1}{2} I(\boldsymbol\Omega, \boldsymbol\Omega)$, (7.8) component form $I_{ij} = \int (\delta_{ij} x_k x_k - x_i x_j)\, \rho\, dV$, (7.9) boxed $L_i = I_{ij} \Omega_j$ + $T = \tfrac{1}{2} I_{ij} \Omega_i \Omega_j$, (7.10) principal-axis simplification, (7.11) directional moment $I_{\mathbf{n}} = I_{ij} n_i n_j$, (7.12) Steiner tensor theorem; {\S}7.2 boxed Eq.~(7.15) Euler dynamic equations $I_1 \dot\Omega_x - (I_2 - I_3) \Omega_y \Omega_z = M_x$ etc.; {\S}7.3 derivation via Lagrangian formalism with Euler angles --- direct CS-language anchor for our Chapter 04 (Euler-Lagrange + Euler-Poincar{\'e} reduction). Kapitola 8 Aplikace: setrva{\v c}n{\'\i}ky --- {\S}8.1 Eqs.~(8.1)-(8.2) free symmetric top, regular precession of body-axis cone (direct anchor for our Phase 1 D8 test\_symmetric\_top.f90 fixture testbed); {\S}8.2 top with friction $\mathbf{M} = -k \boldsymbol\Omega$; {\S}8.3 heavy symmetric top with fixed point (Lagrange top), Eqs.~(8.10)-(8.15) Lagrangian formalism with cyclic coordinates $\psi, \varphi$, effective potential $V_{\mathrm{ef}}(\vartheta)$, three precession cases (a)/(b)/(c) on the sphere --- direct precedent for our gravity-gradient libration testbed analysis (Phase 2 scope).}
+}
+
+
+% =====================================================================
+% §A — Primary textbooks on analytical mechanics
+% =====================================================================
+
+@book{Goldstein2002,
+  author    = {Goldstein, Herbert and Poole, Charles P. and Safko, John L.},
+  title     = {Classical Mechanics},
+  edition   = {3rd},
+  publisher = {Addison-Wesley},
+  year      = {2002},
+  isbn      = {978-0-201-65702-9},
+  note      = {Standard graduate-level reference. Used for the Lagrange-equation derivation in coordinates, the Euler-equations special case, and the introduction to Hamiltonian mechanics.}
+}
+
+@book{LandauLifshitz1976,
+  author    = {Landau, Lev D. and Lifshitz, Evgeny M.},
+  title     = {Mechanics},
+  series    = {Course of Theoretical Physics, Volume 1},
+  edition   = {3rd},
+  publisher = {Butterworth-Heinemann},
+  year      = {1976},
+  isbn      = {978-0-7506-2896-9},
+  note      = {Concise classical presentation. The chapter on motion of a rigid body is the canonical brief-form reference.}
+}
+
+
+% =====================================================================
+% §B — Primary textbooks on rigid-body dynamics
+% =====================================================================
+
+@book{Greenwood2003,
+  author    = {Greenwood, Donald T.},
+  title     = {Advanced Dynamics},
+  publisher = {Cambridge University Press},
+  year      = {2003},
+  isbn      = {978-0-521-82612-9},
+  note      = {Engineering-oriented reference for rigid-body dynamics including quaternion parameterisations and constraint handling.}
+}
+
+@book{Hughes2004,
+  author    = {Hughes, Peter C.},
+  title     = {Spacecraft Attitude Dynamics},
+  publisher = {Dover Publications},
+  year      = {2004},
+  isbn      = {978-0-486-43925-9},
+  note      = {Direct domain reference for the JWST class of problem: rigid spacecraft + gravity-gradient torque + attitude dynamics. The gravity-gradient torque derivation in Chapter 8 is the immediate anchor for our §V tidal-coupling section.}
+}
+
+
+% =====================================================================
+% §C — Modern frame-invariant / variational / symplectic formulations
+% =====================================================================
+
+@book{Arnold1989,
+  author    = {Arnold, Vladimir I.},
+  title     = {Mathematical Methods of Classical Mechanics},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {1989},
+  isbn      = {978-0-387-96890-2},
+  note      = {The canonical modern textbook for frame-invariant analytical mechanics: configuration manifold, tangent and cotangent bundles, symplectic structure, Hamiltonian flows. Our Chapter 1 follows Arnold's framing.}
+}
+
+@book{MarsdenRatiu1999,
+  author    = {Marsden, Jerrold E. and Ratiu, Tudor S.},
+  title     = {Introduction to Mechanics and Symmetry},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {1999},
+  isbn      = {978-0-387-98643-2},
+  note      = {Modern reduction theory: Euler-Poincar{\'e} reduction on SE(3), reduction by symmetries, Lie-group mechanics. Direct anchor for our Chapter 4 (Euler-Poincar{\'e} reduction of the two-body Lagrangian) and Chapter 5 (recovery of Euler equations in body frame).}
+}
+
+@book{SussmanWisdom2015,
+  author    = {Sussman, Gerald Jay and Wisdom, Jack},
+  title     = {Structure and Interpretation of Classical Mechanics},
+  edition   = {2nd},
+  publisher = {MIT Press},
+  year      = {2015},
+  isbn      = {978-0-262-02896-7},
+  url       = {https://mitpress.mit.edu/9780262028967/},
+  note      = {Computational and notation-rigorous presentation of classical mechanics using a typed Lisp-like notation. Especially useful for cross-checking ambiguous notation in classical sources. Free electronic edition available.}
+}
+
+
+% =====================================================================
+% §D — Gravitational potential of extended bodies; multipole expansion
+% =====================================================================
+
+@book{MurrayDermott1999,
+  author    = {Murray, Carl D. and Dermott, Stanley F.},
+  title     = {Solar System Dynamics},
+  publisher = {Cambridge University Press},
+  year      = {1999},
+  isbn      = {978-0-521-57597-3},
+  note      = {Reference for the multipole expansion of mutual gravitational potential between extended bodies (Chapter 4) and for the restricted three-body problem (Chapter 3). Cited extensively for our §V (tidal-coupling) and v0.2 L2-frame extension.}
+}
+
+@book{Jackson1999,
+  author    = {Jackson, John David},
+  title     = {Classical Electrodynamics},
+  edition   = {3rd},
+  publisher = {Wiley},
+  year      = {1999},
+  isbn      = {978-0-471-30932-1},
+  note      = {Multipole expansion technique presented for electromagnetic potentials in Chapter 4; the mathematical structure transfers directly to gravitational multipole expansion. Cited as auxiliary mathematical reference where the multipole formalism is invoked.}
+}
+
+
+% =====================================================================
+% §E — Restricted three-body problem and Lagrangian equilibrium points
+% =====================================================================
+% (Reserved for v0.2 canonical-derivation extension covering L2-frame
+% dynamics. Not yet cited in v0.1 of this tier.)
+
+@book{Szebehely1967,
+  author    = {Szebehely, Victor},
+  title     = {Theory of Orbits: The Restricted Problem of Three Bodies},
+  publisher = {Academic Press},
+  year      = {1967},
+  note      = {Classical comprehensive reference for the restricted three-body problem. v0.2 anchor for the L2-equilibrium-point chapter (when JWST orbital context is added to the canonical derivation).}
+}
+
+
+% =====================================================================
+% §G — Numerical methods anchors
+% =====================================================================
+
+@book{HairerLubichWanner2006,
+  author    = {Hairer, Ernst and Lubich, Christian and Wanner, Gerhard},
+  title     = {Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {2006},
+  isbn      = {978-3-540-30663-4},
+  note      = {Authoritative reference for symplectic integrators and structure-preserving methods. Cited when discussing why the engineer-tier impl uses RK4 (non-symplectic but adequate for short-horizon conservation diagnostics) and what a symplectic upgrade would look like (e.g. Lie-group variational integrators on SE(3)$\times$SE(3)).}
+}
+
+@article{Press2007NR,
+  author    = {Press, William H. and Teukolsky, Saul A. and Vetterling, William T. and Flannery, Brian P.},
+  title     = {Numerical Recipes: The Art of Scientific Computing},
+  edition   = {3rd},
+  publisher = {Cambridge University Press},
+  year      = {2007},
+  isbn      = {978-0-521-88068-8},
+  note      = {RK4 reference (Chapter 17, eq. 17.1.3); cited in the engineer-tier docs for the existing dynamics.py implementation. Included here for completeness; engineer-tier docs are the primary site of NR citations.}
+}
+
+
+% =====================================================================
+% End refs.bib
+% =====================================================================
