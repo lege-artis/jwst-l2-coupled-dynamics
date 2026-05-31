@@ -1,11 +1,7 @@
 # B5.5 — JWST at L2: structured rotational dynamics as a Fourier diagnostic
 
-<!-- TODO (AG4): Place dragon-Pooh-Ring epigraph here. This chapter is
-     the orbital-dynamics bridge and the natural fit for the Tolkien
-     orbital-quest aesthetic per _handoffs/birthday-edition-v3/MASTER-BRIEF.md
-     §5. Coordinate with illustrator brief H? brief when the v3 asset
-     is commissioned. Suggested placement: between the chapter heading
-     and "## The premise". -->
+![](figures/fig-b55-epigraph-hobbit-dragon-ring.png)
+*— continuing motif: the dragon, the hobbit, the Ring*
 
 ---
 

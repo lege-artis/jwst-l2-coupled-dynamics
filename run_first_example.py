@@ -62,6 +62,7 @@ from dynamics import (
     q_to_matrix, inertia_inertial_frame, principal_axes_inertial,
     gravity_gradient_torque_body_frame,
     total_kinetic_energy, total_potential_energy, total_angular_momentum,
+    back_reaction_force_one_body,
 )
 
 
@@ -118,7 +119,7 @@ def main():
 
     # --- baseline energy + angular momentum for conservation tracking ---
     Etk0, Erk0, _ = total_kinetic_energy(state, m_a, I_a_body, m_b, I_b_body)
-    Ep0 = total_potential_energy(state, m_a, m_b)
+    Ep0 = total_potential_energy(state, m_a, m_b, I_a_body, I_b_body)
     E0 = Etk0 + Erk0 + Ep0
     L0 = total_angular_momentum(state, m_a, I_a_body, m_b, I_b_body)
     print(f"  baseline E_trans = {Etk0:.6e} J")
@@ -148,7 +149,7 @@ def main():
                     I_b_body, ba.x - bb.x, R_b, m_a)
 
                 Etk, Erk, _ = total_kinetic_energy(state, m_a, I_a_body, m_b, I_b_body)
-                Ep = total_potential_energy(state, m_a, m_b)
+                Ep = total_potential_energy(state, m_a, m_b, I_a_body, I_b_body)
                 L = total_angular_momentum(state, m_a, I_a_body, m_b, I_b_body)
 
                 snap = {
@@ -202,7 +203,7 @@ def main():
     # --- final-state summary + conservation residuals ---
     ba, bb = unpack_state(state)
     Etk, Erk, _ = total_kinetic_energy(state, m_a, I_a_body, m_b, I_b_body)
-    Ep = total_potential_energy(state, m_a, m_b)
+    Ep = total_potential_energy(state, m_a, m_b, I_a_body, I_b_body)
     Ef = Etk + Erk + Ep
     Lf = total_angular_momentum(state, m_a, I_a_body, m_b, I_b_body)
 

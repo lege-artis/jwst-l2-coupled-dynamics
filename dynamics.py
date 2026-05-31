@@ -11,11 +11,12 @@ Conventions:
 - Angular velocity omega is in the BODY frame (Euler's equations canonical form)
 - Inertia tensor I_body is constant in the body frame; transform to inertial via R . I . R^T
 
-Equations of motion:
+Equations of motion (v0.1.1: includes back-reaction force + tidal potential):
   Translation (Newton, inertial frame):
     dx/dt = v
-    dv/dt = F_grav / m
-    F_grav = -G * m_self * m_other * (x_self - x_other) / |x_self - x_other|^3
+    dv/dt = (F_kepler + F_back-reaction) / m
+    F_kepler = -G * m_self * m_other * (x_self - x_other) / |x_self - x_other|^3
+    F_back-reaction: Ch 04 §4.6.2 boxed (OQ-4.5)
 
   Rotation (Euler, body frame):
     I_body . d(omega)/dt + omega x (I_body . omega) = tau_body
@@ -131,6 +132,32 @@ def gravity_gradient_torque_body_frame(I_body: np.ndarray,
     return tau
 
 
+def back_reaction_force_one_body(I_body: np.ndarray,
+                                  r_hat: np.ndarray,
+                                  R: np.ndarray,
+                                  m_other: float,
+                                  r_mag: float) -> np.ndarray:
+    """Back-reaction force on the relative orbit from one body's tidal coupling.
+
+    Ch 04 §4.6.2 boxed (OQ-4.5):
+      F = -(3Gm/(2r^4)) Phi r_hat
+          - (3Gm/r^4) (I3 - r_hat r_hat^T) R (I_body . r_hat_body)
+    where r_hat_body = R^T . r_hat  and  Phi = tr(I) - 3 r_hat_body . I . r_hat_body.
+
+    r_hat is always the unit vector from body A to body B in the inertial frame,
+    used identically for both body A and body B contributions (§4.6.2, §4.6.4).
+    The total back-reaction force F_br_A + F_br_B enters the relative equation
+    mu*rho_ddot = F_kepler + F_br_total.  Force on body A = -F_br_total;
+    force on body B = +F_br_total (Newton's third law, §4.6.4)."""
+    r_hat_body = R.T @ r_hat
+    Phi = np.trace(I_body) - 3.0 * (r_hat_body @ I_body @ r_hat_body)
+    coeff = 3.0 * G_NEWTON * m_other / r_mag**4
+    I_rhat_inertial = R @ (I_body @ r_hat_body)
+    # (I3 - r_hat r_hat^T) R (I_body r_hat_body) = transverse projection
+    transverse = I_rhat_inertial - r_hat * (r_hat @ I_rhat_inertial)
+    return -0.5 * coeff * Phi * r_hat - coeff * transverse
+
+
 # --- derivatives: dstate/dt ---
 
 def state_derivative(state: np.ndarray,
@@ -139,23 +166,34 @@ def state_derivative(state: np.ndarray,
     """Compute dstate/dt for the 26-component coupled-body state."""
     body_a, body_b = unpack_state(state)
 
-    # Translational dynamics
+    # Separation vector and rotation matrices (used by both translation and rotation)
+    r_vec = body_b.x - body_a.x          # vector from A to B in inertial frame
+    r_mag = np.linalg.norm(r_vec)
+    R_a = q_to_matrix(body_a.q)
+    R_b = q_to_matrix(body_b.q)
+
+    # Kepler translational dynamics
     F_a = gravitational_force_on_a(body_a.x, body_b.x, m_a, m_b)
-    F_b = -F_a   # Newton's 3rd law
+    F_b = -F_a   # Newton's 3rd law (Kepler piece)
     dx_a = body_a.v
     dv_a = F_a / m_a
     dx_b = body_b.v
     dv_b = F_b / m_b
 
+    # Back-reaction force (Ch 04 §4.6.2, OQ-4.5 CLOSED)
+    # Both bodies use the same r_hat = (x_B - x_A)/r (§4.6.2 symmetry).
+    # Force on A = -(F_br_A + F_br_B); force on B = +(F_br_A + F_br_B).
+    if r_mag >= 1e-12:
+        r_hat = r_vec / r_mag
+        F_br_a = back_reaction_force_one_body(I_a_body, r_hat, R_a, m_b, r_mag)
+        F_br_b = back_reaction_force_one_body(I_b_body, r_hat, R_b, m_a, r_mag)
+        F_br_total = F_br_a + F_br_b
+        dv_a -= F_br_total / m_a
+        dv_b += F_br_total / m_b
+
     # Rotational dynamics — gravity-gradient torque from the other body
-    R_a = q_to_matrix(body_a.q)
-    R_b = q_to_matrix(body_b.q)
-
-    r_a_to_b_inertial = body_b.x - body_a.x   # vector from A to B in inertial frame
-    r_b_to_a_inertial = -r_a_to_b_inertial
-
-    tau_a = gravity_gradient_torque_body_frame(I_a_body, r_a_to_b_inertial, R_a, m_b)
-    tau_b = gravity_gradient_torque_body_frame(I_b_body, r_b_to_a_inertial, R_b, m_a)
+    tau_a = gravity_gradient_torque_body_frame(I_a_body, r_vec, R_a, m_b)
+    tau_b = gravity_gradient_torque_body_frame(I_b_body, -r_vec, R_b, m_a)
 
     # Euler's equations: I . d(omega)/dt = tau - omega x (I . omega)
     I_omega_a = I_a_body @ body_a.omega
@@ -204,14 +242,34 @@ def total_kinetic_energy(state: np.ndarray,
     return E_trans, E_rot, E_trans + E_rot
 
 
-def total_potential_energy(state: np.ndarray, m_a: float, m_b: float) -> float:
-    """Newtonian gravitational PE between the two bodies (treating them as point masses
-       for the translational PE; this is the leading-order term)."""
+def total_potential_energy(state: np.ndarray, m_a: float, m_b: float,
+                            I_a_body: np.ndarray | None = None,
+                            I_b_body: np.ndarray | None = None) -> float:
+    """Gravitational PE: monopole-monopole (Kepler) + optional quadrupole-tidal terms.
+
+    When I_a_body and I_b_body are supplied, adds the Ch 03 §3.4.3 tidal pieces
+    V_tidal_A + V_tidal_B so the conservation diagnostic tracks the full
+    quadrupole-truncated V rather than the monopole-only term (OQ-3.4 CLOSED).
+    Omitting the inertia tensors returns the v0.1.0 monopole-only result."""
     body_a, body_b = unpack_state(state)
-    r_mag = np.linalg.norm(body_a.x - body_b.x)
+    r_vec = body_b.x - body_a.x          # from A to B
+    r_mag = np.linalg.norm(r_vec)
     if r_mag < 1e-12:
         return 0.0
-    return -G_NEWTON * m_a * m_b / r_mag
+    V_kepler = -G_NEWTON * m_a * m_b / r_mag
+    if I_a_body is None or I_b_body is None:
+        return V_kepler
+    # Quadrupole-tidal augmentation (Ch 03 §3.4.3 boxed, OQ-3.4)
+    r_hat = r_vec / r_mag
+    R_a = q_to_matrix(body_a.q)
+    R_b = q_to_matrix(body_b.q)
+    r_hat_body_a = R_a.T @ r_hat
+    V_tidal_a = -(G_NEWTON * m_b / (2.0 * r_mag**3)) * (
+        np.trace(I_a_body) - 3.0 * (r_hat_body_a @ I_a_body @ r_hat_body_a))
+    r_hat_body_b = R_b.T @ (-r_hat)      # direction from B toward A in B's body frame
+    V_tidal_b = -(G_NEWTON * m_a / (2.0 * r_mag**3)) * (
+        np.trace(I_b_body) - 3.0 * (r_hat_body_b @ I_b_body @ r_hat_body_b))
+    return V_kepler + V_tidal_a + V_tidal_b
 
 
 def total_angular_momentum(state: np.ndarray,
