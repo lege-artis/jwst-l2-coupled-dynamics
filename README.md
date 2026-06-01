@@ -1,5 +1,9 @@
 # lege-artis / jwst-l2-coupled-dynamics
 
+[![Apache 2.0](https://img.shields.io/badge/code-Apache%202.0-blue.svg)](LICENSE)
+[![CC BY-SA 4.0](https://img.shields.io/badge/docs-CC%20BY--SA%204.0-green.svg)](LICENSE-DOCS)
+[![Citation](https://img.shields.io/badge/cite-CITATION.cff-orange.svg)](CITATION.cff)
+
 Canonical reference implementation of two-rigid-body gravitationally-coupled
 dynamics, anchored on a JWST-like primary and a probe-like secondary
 satellite in deep space. Sibling project to
