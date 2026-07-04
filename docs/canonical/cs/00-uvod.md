@@ -8,7 +8,7 @@
 >
 > **Doprovodné úrovně.** Inženýrská úroveň `docs/engineer/en/00-quick-start.md` (připravovaná) pokryje stejný rozsah z pohledu praktikanta používajícího knihovnu. Shad-úroveň `SHAD-NARRATIVE.md` (již odeslaná) pokrývá průvodce prvním prototypem psaný inženýrskou narací.
 
-> **Poznámka k odvozové linii.** Tato CS kanonická úroveň (v0.1) je odvozena z anglické kanonické úrovně `docs/canonical/en/00-introduction.md` (v0.1). Terminologie je ukotvena v Podolský 2018 *Teoretická mechanika ve třech knihách* (Matfyzpress, ISBN 978-80-7378-499-7). Tělesový text je psán jako samostatný CS dokument; EN verze zůstává autoritativním pramenem při budoucích aktualizacích.
+> **Poznámka ke způsobu a předpokladům odvození.** Tato CS kanonická úroveň (v0.1) je odvozena z anglické kanonické úrovně `docs/canonical/en/00-introduction.md` (v0.1). Terminologie je ukotvena v Podolský 2018 *Teoretická mechanika ve třech knihách* (Matfyzpress, ISBN 978-80-7378-499-7). Tělesový text je psán jako samostatný CS dokument; EN verze zůstává autoritativním pramenem při budoucích aktualizacích.
 
 ---
 

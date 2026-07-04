@@ -202,5 +202,47 @@
 
 
 % =====================================================================
+% §H — Lyapunov-spectrum and chaos-indicator anchors (Phase 2 Sitting 3-4)
+% =====================================================================
+
+@article{Benettin1980,
+  author    = {Benettin, Giancarlo and Galgani, Luigi and Giorgilli, Antonio and Strelcyn, Jean-Marie},
+  title     = {Lyapunov Characteristic Exponents for Smooth Dynamical Systems and for Hamiltonian Systems; A Method for Computing All of Them. Part 1: Theory},
+  journal   = {Meccanica},
+  volume    = {15},
+  pages     = {9--20},
+  year      = {1980},
+  doi       = {10.1007/BF02128236},
+  note      = {The BGGS algorithm: Lyapunov spectrum via repeated Gram-Schmidt reorthonormalisation of a propagated tangent basis. {\S}2 is the formal statement of the reorthonormalisation step anchored in our Ch 07 {\S}7.2. Part 2 (Numerical Application) appears in the same volume, pages 21--30; the combined pagination 9--30 covers both parts. Primary algorithmic anchor for \texttt{lyapunov/spectrum.py}.}
+}
+
+@incollection{Skokos2010,
+  author    = {Skokos, Charalampos},
+  title     = {The {Lyapunov} Characteristic Exponents and Their Computation},
+  booktitle = {Dynamics of Small Solar System Bodies and Exoplanets},
+  series    = {Lecture Notes in Physics},
+  volume    = {790},
+  publisher = {Springer},
+  address   = {Berlin, Heidelberg},
+  year      = {2010},
+  pages     = {63--135},
+  doi       = {10.1007/978-3-642-04458-8_2},
+  note      = {Modern self-contained formulation of the BGGS algorithm ({\S}2.2), including the relationship between finite-time Lyapunov exponents (FTLE) and asymptotic exponents, convergence behaviour for regular vs chaotic orbits, and practical QR-cadence guidance. Secondary algorithmic anchor for Ch 07 {\S}7.2 + {\S}7.4.}
+}
+
+@article{Geist1990,
+  author    = {Geist, Karlheinz and Parlitz, Ulrich and Lauterborn, Werner},
+  title     = {Comparison of Different Methods for Computing Lyapunov Exponents},
+  journal   = {Progress of Theoretical Physics},
+  volume    = {83},
+  number    = {5},
+  pages     = {875--893},
+  year      = {1990},
+  doi       = {10.1143/PTP.83.875},
+  note      = {Survey comparing continuous and discrete QR/Gram-Schmidt methods for Lyapunov-exponent computation. Cited in \texttt{lyapunov/spectrum.py} as the methodological cross-check for the discrete-QR (BGGS) choice.}
+}
+
+
+% =====================================================================
 % End refs.bib
 % =====================================================================
