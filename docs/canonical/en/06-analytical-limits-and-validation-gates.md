@@ -290,47 +290,47 @@ In body-frame $\mathbf{L}$-space, the trajectory lies on the intersection of:
 
 Generically (for $|\mathbf{L}|^2 \neq 2 T I_i$ for any $i$), the intersection is a smooth closed curve. The trajectory traverses this curve periodically — the **polhode** in body-frame $\mathbf{L}$-space (Goldstein 2002 §5.6 nomenclature).
 
-**Parametrisation by elliptic functions.** Assume $I_1 < I_2 < I_3$ and $|\mathbf{L}|^2 < 2 T I_2$ (the "small-amplitude" branch encircling the smallest-moment principal axis; the symmetric case $|\mathbf{L}|^2 > 2 T I_2$ encircles the largest-moment axis with the role of $I_1$ and $I_3$ swapped). Substituting the conservation laws into the Euler equation for $L_y$ and using $dL_y/dt = (I_3 - I_1)(L_z L_x)/(I_3 I_1)$, after algebra:
+**Parametrisation by elliptic functions.** Assume $I_1 < I_2 < I_3$ and $|\mathbf{L}|^2 > 2 T I_2$ (the branch whose polhode encircles the **largest**-moment principal axis $\hat{\mathbf{e}}_3$ — this is the branch realised by the §6.5.5 Dzhanibekov test configurations, e.g. $\mathbf{I} = \mathrm{diag}(100,200,400)$, $\boldsymbol{\Omega}_0 = (10^{-3}, 10^{-2}, 10^{-3})$ gives $|\mathbf{L}|^2/(2TI_2) = 1.017$; the complementary branch $|\mathbf{L}|^2 < 2 T I_2$ encircles the smallest-moment axis $\hat{\mathbf{e}}_1$ and follows by swapping the roles of indices 1 and 3 throughout). Substituting the conservation laws into the Euler equation for $L_y$ and using $dL_y/dt = (I_3 - I_1)(L_z L_x)/(I_3 I_1)$, after algebra:
 
 $$
 \boxed{
 \left(\frac{dL_y}{dt}\right)^2
 \;=\;
-\frac{(I_2 - I_1)(I_3 - I_2)}{I_1 I_2 I_3}\,
-\big[\, \alpha^2 - L_y^2 \,\big]\,
-\big[\, \beta^2 - L_y^2 \,\big],
+\frac{(I_2 - I_1)(I_3 - I_2)}{I_1 I_2^2 I_3}\,
+\big[\, \beta^2 - L_y^2 \,\big]\,
+\big[\, \gamma^2 - L_y^2 \,\big],
 }
 $$
 
-where $\alpha^2 = (2 T I_3 - |\mathbf{L}|^2)(I_2 - I_1) / [(I_3 - I_2)(I_3 - I_1)] \cdot I_3/I_2$ and $\beta^2 = (2 T I_3 - |\mathbf{L}|^2) I_2 / (I_3 - I_2)$ — set by the two conserved quantities. (Sign conventions: for the "small-amplitude" branch, $\alpha^2 < \beta^2$, and $L_y$ oscillates between $-\alpha$ and $+\alpha$.)
+where $\beta^2 = I_2\,(2 T I_3 - |\mathbf{L}|^2)/(I_3 - I_2)$ and $\gamma^2 = I_2\,(|\mathbf{L}|^2 - 2 T I_1)/(I_2 - I_1)$ — set by the two conserved quantities. On this branch $\beta^2 \le \gamma^2$ (equality exactly at the separatrix $|\mathbf{L}|^2 = 2TI_2$, where both equal $2TI_2$), and $L_y$ oscillates between $-\beta$ and $+\beta$: the turning value follows directly from conservation by setting $L_x = 0$, which gives $L_y^2 = \beta^2$.
 
 This ODE is the standard form for **Jacobi elliptic-function** parametrisation. The closed-form solution is (Landau-Lifshitz Vol I §37 Eqs. (37.8)–(37.10); Goldstein 2002 §5.6):
 
 $$
 \boxed{
 \begin{aligned}
-L_x(t) \;&=\; \alpha\, \sqrt{I_1(I_3-I_2)/(I_2(I_3-I_1))}\, \mathrm{cn}\big(\Omega^*\, t,\, k\big), \\
-L_y(t) \;&=\; \alpha\, \mathrm{sn}\big(\Omega^*\, t,\, k\big), \\
-L_z(t) \;&=\; \alpha\, \sqrt{I_3(I_2-I_1)/(I_2(I_3-I_1))}\, \mathrm{dn}\big(\Omega^*\, t,\, k\big),
+L_x(t) \;&=\; \sqrt{\frac{I_1\,(2TI_3 - |\mathbf{L}|^2)}{I_3 - I_1}}\; \mathrm{cn}\big(\Omega^* t + u_0,\, k\big), \\
+L_y(t) \;&=\; \sqrt{\frac{I_2\,(2TI_3 - |\mathbf{L}|^2)}{I_3 - I_2}}\; \mathrm{sn}\big(\Omega^* t + u_0,\, k\big), \\
+L_z(t) \;&=\; \sqrt{\frac{I_3\,(|\mathbf{L}|^2 - 2TI_1)}{I_3 - I_1}}\; \mathrm{dn}\big(\Omega^* t + u_0,\, k\big),
 \end{aligned}
 }
 $$
 
-where $\mathrm{sn}(u, k), \mathrm{cn}(u, k), \mathrm{dn}(u, k)$ are the Jacobi elliptic functions of the first kind with elliptic modulus $k$ and argument $u = \Omega^* t$. The characteristic frequency $\Omega^*$ and modulus $k$ are:
+with phase $u_0$ fixed by the initial condition. Consistency checks (exact, by the Jacobi identities $\mathrm{cn}^2 = 1 - \mathrm{sn}^2$, $\mathrm{dn}^2 = 1 - k^2\mathrm{sn}^2$): $L_x^2 + L_y^2 + L_z^2 = |\mathbf{L}|^2$ and $L_x^2/I_1 + L_y^2/I_2 + L_z^2/I_3 = 2T$ hold identically for all $t$. The $L_y$ amplitude is $\beta$, matching the turning-point argument above; $L_z$ never vanishes on this branch ($\mathrm{dn} > 0$), which is the polhode-encircles-$\hat{\mathbf{e}}_3$ statement. The characteristic frequency $\Omega^*$ and modulus $k$ are:
 
 $$
 \Omega^*
 \;=\;
-\sqrt{\frac{(I_3 - I_2)(I_2 - I_1)\,(2 T I_3 - |\mathbf{L}|^2)}{I_1 I_2 I_3 \cdot |\mathbf{L}|^2}\, |\mathbf{L}|^2/I_3},
-$$
-
-$$
+\sqrt{\frac{(I_3 - I_2)\,(|\mathbf{L}|^2 - 2 T I_1)}{I_1 I_2 I_3}},
+\qquad
 k^2
 \;=\;
-\frac{(I_2 - I_1)\,(|\mathbf{L}|^2 - 2 T I_1)}{(I_3 - I_2)\,(2 T I_3 - |\mathbf{L}|^2)}.
+\frac{(I_2 - I_1)\,(2 T I_3 - |\mathbf{L}|^2)}{(I_3 - I_2)\,(|\mathbf{L}|^2 - 2 T I_1)}.
 $$
 
-(The detailed algebra is in Landau-Lifshitz §37 and Goldstein §5.6 with slightly differing conventions; the form here follows Landau-Lifshitz.)
+(The detailed algebra is in Landau-Lifshitz §37 and Goldstein §5.6 with slightly differing conventions; the form here follows Landau-Lifshitz. Implementation note: `scipy.special.ellipk`/`ellipj` take the parameter $m = k^2$, not the modulus $k$.)
+
+> **Correction note (2026-07-11).** The v0.1.0–v0.3.0 published form of this subsection carried erroneous boxed expressions for the reduction prefactor, the amplitude coefficients, $\Omega^*$, and $k^2$, and misidentified the branch (the amplitude of $L_y$ was wrong by a factor ~16 and the implied flip period by 7–63% depending on configuration). The error was found when the flip-period cross-check against a tight-tolerance numerical integration was implemented for the first time (forensic audit 2026-07-11; internal audit record `_audit/forensic-2026-07-11/` in the source monorepo): the corrected forms above match the numerical golden to $\lesssim 10^{-12}$ in period and $8\times10^{-14}$ element-wise in $(L_x, L_y, L_z)(t)$ across the §6.5.5 configurations. Regression guard: `tests/test_elliptic_oracle.py`. This is the fourth boxed-formula intra-doc drift incident (KB-043 class) and the first to have reached a public mirror — precisely because the "cross-check" this box needed was described in fixture metadata but never implemented.
 
 **Period of the elliptic motion.** The trajectory in body-frame $\mathbf{L}$-space is periodic with period:
 
@@ -361,7 +361,7 @@ matching the §6.5.2 linearised exponential-growth dynamics in the early-time re
 | Quantity | Tolerance | Test-file |
 |---|---|---|
 | Linearised growth rate $\sigma$ vs §6.5.2 analytical formula | $< 5\%$ over the linear regime | `backends/fortran/tests/test_instability_dzhanibekov.f90` (Phase 1 D9 Case 2) + `tests/test_dynamics.py::TestDzhanibekovInstability` (queued engineer-tier) |
-| Finite-amplitude flip period vs §6.5.3 boxed $T_{\mathrm{LL}} = 4K(k)/\Omega^*$ | $< 10^{-3}$ relative; degrades systematically near $k \to 1$ saddle approach as $K(k)$ becomes elliptic-modulus-sensitive | (same; Phase 1 D9 finite-amplitude scan) |
+| Finite-amplitude flip period vs §6.5.3 boxed $T_{\mathrm{LL}} = 4K(k)/\Omega^*$ | $< 10^{-3}$ relative; degrades systematically near $k \to 1$ saddle approach as $K(k)$ becomes elliptic-modulus-sensitive | `tests/test_elliptic_oracle.py` (added 2026-07-11; the D9 scan validated flips against numerics only, not against this closed form — see §6.5.3 correction note) |
 | Logarithmic-amplitude scaling of flip period at small perturbation | $T_{\mathrm{flip}} \cdot \sigma = 2\ln(|\Omega_2^0|/|\delta\Omega|) + \mathcal{O}(1)$ slope match | (same) |
 | Conservation $T$, $|\mathbf{L}|^2$ across flips | $< 10^{-11}$ relative as in §6.3 testbed | (same) |
 | Number of completed flips over 600 s window | Match the elliptic-function-predicted count, ±1 | (same) |

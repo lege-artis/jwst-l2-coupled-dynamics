@@ -1,6 +1,7 @@
 # .github/workflows/python-tests.yml
 # CI workflow: run the Python reference test suite on push + PR.
-# 43 pytest tests; ~5 s wall on modern runners.
+# v0.1.1: 52 tests. v0.2.0+ adds the Lyapunov suite; v0.3.0 the Phase-3 full-spectrum
+# suite (test_lyapunov_phase3.py) — the latter need scipy (libration/elliptic + Phase 3).
 name: python-tests
 
 on:
@@ -25,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install numpy pytest
-      - name: Run pytest
-        run: python -m pytest tests/ -v
+          python -m pip install numpy scipy pytest
+      - name: Run pytest (fast tests)
+        run: python -m pytest tests/ -v -m "not slow"
       - name: Smoke-run first example
         run: python run_first_example.py

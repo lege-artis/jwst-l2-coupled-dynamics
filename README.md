@@ -12,9 +12,31 @@ lege-artis/kh-sim — same multi-backend, layered-test-pyramid pattern.
 
 ## Status
 
-**v0.1.0 — first public release** (2026-05-25).
+**v0.3.1 — doc-patch release** (2026-07): corrects the Ch 06 §6.5.3 boxed
+Jacobi-elliptic parametrisation (the published v0.1.0–v0.3.0 boxed forms for
+the amplitudes, characteristic frequency Ω\* and modulus k² were erroneous —
+see the dated correction note in `docs/canonical/en/06-analytical-limits-and-validation-gates.md`
+§6.5.3 and the new regression guard `tests/test_elliptic_oracle.py`, which
+validates the corrected closed form against a tight-tolerance integration to
+≲1e-12 in period and 8e-14 element-wise). Also refreshes this README, which
+had lagged two releases.
 
-This release ships:
+Cumulative shipped state (v0.1.0 → v0.3.1):
+
+- **Phase 2 (shipped inside v0.3.0)** — symplectic KDK Störmer-Verlet
+  integrator on SE(3)×SE(3) (`integrators/`), Lagrange-top libration testbed
+  with the (2/π)K(k) finite-amplitude oracle (`testbeds/`), BGGS
+  Lyapunov-spectrum machinery with three calibrated scenarios (`lyapunov/`),
+  canonical-tier Ch 07 (EN + CS).
+- **Phase 3 (v0.3.0, 2026-07-04)** — Lie-algebraic so(3)×R³ cocycle +
+  quaternion-deflation tier for the full 12-dimensional Lyapunov spectrum;
+  Hamiltonian-pairing gate; Ch 07 §7.10 corrected-prediction narrative (the
+  slow FTLE convergence is intrinsic to the quasi-periodic dynamics, not the
+  R¹⁴ embedding).
+- **Canonical-tier docs** — EN Ch 00–07 complete; **CS Ch 00–07 complete**
+  (Podolský 2018 primary anchor); engineer-tier Ch 07 how-to (EN + CS).
+
+The v0.1.0 foundation (2026-05-25):
 
 - **Python reference layer** — runnable in ~3 s on a modern laptop. Coupled
   12-DOF dynamics (Newton for translation + Euler for rotation, body-frame),
@@ -53,22 +75,27 @@ This release ships:
 | Mutual gravitational potential | Yes, derived from first principles via multipole expansion |
 | Rigid rotation about centre of mass | Yes, derived via Lagrange + Euler-Poincaré reduction |
 | Relative orbital motion in centre-of-mass frame | Yes |
-| Restricted three-body L2 dynamics (Sun-Earth-spacecraft) | Deferred to v0.2 |
+| Restricted three-body L2 dynamics (Sun-Earth-spacecraft) | Planned v0.4.x (CR3BP TG-8 oracles specified) |
 | Relativistic 1PN/2PN corrections | Explicitly excluded (v/c ~ 10^-5 for JWST scales) |
 | Solar radiation pressure, third-body Moon | Out of canonical-tier scope |
 | Internal flexibility / vibration modes | Out of scope (rigid-body baseline) |
 
 ## Plan
 
-* **v0.1.0** *(this release)* — Python reference + Fortran Phase 1 + canonical-tier Ch 00..06 (EN)
-* **v0.1.x** — Engineer-tier docs (EN) + CS canonical-tier translation
-  (Podolský 2018 anchored)
-* **v0.2.0** — L2 restricted three-body extension; symplectic Lie-group
-  variational integrator; Lyapunov spectrum near Dzhanibekov regime
-* **v0.2.x** — Multi-backend ports: Pascal (NR 1986 anchor) + C++ + Rust,
-  mirroring the lege-artis/fourier + lege-artis/kh-sim layout
-* **v0.3.0+** — Shad-tier engineer-narrated docs; visualisation tooling
-  (matplotlib → Plotly → Three.js per tier plan)
+* **v0.1.0** *(2026-05-25)* — Python reference + Fortran Phase 1 + canonical-tier Ch 00..06 (EN) — **shipped**
+* **v0.1.1** *(2026-05-31)* — back-reaction force + quadrupole-tidal energy; conservation to ULP ceiling — **shipped**
+* **v0.3.0** *(2026-07-04)* — symplectic Lie-group variational integrator +
+  libration testbed + full 12-dim Lyapunov spectrum (Phases 2+3); CS canonical
+  tier — **shipped** (supersedes the former v0.2.0 line)
+* **v0.3.1** *(this release)* — Ch 06 §6.5.3 erratum + elliptic-oracle
+  regression guard + README refresh — **shipped**
+* **Next: v0.4.x** — L2 restricted three-body extension (CR3BP rotating frame;
+  Master-Test-Set TG-8 oracles already specified); Master Test Set gate suite
+  integration
+* **Later** — Multi-backend ports: Pascal (NR 1986 anchor) + C++ + Rust,
+  mirroring the lege-artis/fourier + lege-artis/kh-sim layout; Shad-tier
+  engineer-narrated docs; visualisation tooling (matplotlib → Plotly →
+  Three.js per tier plan)
 
 ## How to run
 
@@ -141,9 +168,9 @@ Python oracle) element-wise at Higham §4.2 Option G tolerance.
 
 | Tier | Status | Audience | Location |
 |------|--------|----------|----------|
-| **Canonical (EN)** | Ch 00..06 authored | Mathematician, physicist, academic reviewer | `docs/canonical/en/` |
-| **Canonical (CS)** | Brief authored; translation queued v0.1.1 | Czech-speaking reader; Podolský 2018 primary anchor | `docs/canonical/cs/` (forthcoming) |
-| **Engineer (EN)** | Queued v0.1.x | Practitioner who wants to use the code | `docs/engineer/en/` (forthcoming) |
+| **Canonical (EN)** | Ch 00..07 complete (incl. §6.5.3 correction note 2026-07-11) | Mathematician, physicist, academic reviewer | `docs/canonical/en/` |
+| **Canonical (CS)** | Ch 00..07 complete; Podolský 2018 primary anchor | Czech-speaking reader | `docs/canonical/cs/` |
+| **Engineer (EN + CS)** | Ch 07 Lyapunov how-to shipped; remaining chapters queued | Practitioner who wants to use the code | `docs/engineer/` |
 | **Shad-tier** | Single narrative shipped | Engineer-narrated walkthrough; oscilloscope-curious reader | `SHAD-NARRATIVE.md` |
 
 ## License
